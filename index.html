@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Natoy and Netoy Loves U</title>
+    <style>
+        body {
+            background-color: #000;
+            color: rgb(255, 255, 255);
+            font-family: 'Roboto', monospace;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+            background-image: url('https://cdn.discordapp.com/attachments/1300576629784969237/1303099491225829458/Kupalino1-min.gif?ex=6742e939&is=674197b9&hm=1e0404ad8c7810426843e00458d986f60c669362e3b46364c761c609232c4e37&');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .skull {
+            font-size: 100px;
+            margin: 20px;
+        }
+        .message {
+            font-size: 1.5em;
+            margin: 20px;
+        }
+        .logo {
+            width: 340px;
+            height: 437px;
+            margin: 20px auto;
+            animation: rotate 3s infinite linear;
+        }
+        .gangzi {
+            color:blue;
+            font-size: 4em;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+        .ip-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 60%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            animation: pulse 2s infinite;
+            color: white;
+            font-family: 'Courier New', monospace;
+            text-align: left;
+        }
+        .ip-header {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #00ff00;
+        }
+        .ip-value {
+            font-weight: bold;
+            color: #ff4500;
+            animation: pulse 1.5s infinite alternate;
+        }
+        .ip-info-header {
+            font-size: 1.2em;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: cyan;
+        }
+        .ip-info {
+            font-size: 1em;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 5px;
+            padding: 10px;
+            color: #ffeb3b;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-x: auto;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <img src="https://media.discordapp.net/attachments/1289774174230806528/1290053469369270374/IMG_6522.png?ex=6742e92b&is=674197ab&hm=b5a581622fee500d8b26ec33a83b46df09e9beef397954a10075efbf9eac4de4&=&format=webp&quality=lossless&width=300&height=437" class="logo" alt="Hacker Logo">
+    <div class="gangzi">Don't blame the hacker blame the dev</div>
+
+    <div style="color:blue;font:12pt Courier New;"><b> my discord <font color="white"> discord.gg/kupalinogang </font></b></div><br><br>
+    <div class="ip-container">
+        <div class="ip-header">
+            <b>Your IP:</b> 
+            <span id="ip-address-value" class="ip-value">Fetching...</span>
+        </div>
+        <div class="ip-info-header">
+            <b>IP Info:</b>
+        </div>
+        <pre id="ip-info" class="ip-info">Fetching...</pre>
+    </div>
+    
+    <script>
+        let seconds = 0;
+        setInterval(() => {
+            seconds++;
+            document.getElementById('timer').textContent = `Time elapsed: ${seconds} seconds`;
+        }, 1000);
+
+        function fetchIPAndInfo() {
+            fetch('https://api.ipify.org/?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip-address-value').textContent = data.ip;
+                    return data.ip;
+                })
+                .then(ip => fetch(`https://ipinfo.io/${ip}/json`))
+                .then(response => response.json())
+                .then(ipInfoData => {
+                    document.getElementById('ip-info').textContent = JSON.stringify(ipInfoData, null, 2);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('ip-address-value').textContent = 'Unable to fetch IP address.';
+                    document.getElementById('ip-info').textContent = 'Unable to fetch IP information.';
+                });
+        }
+
+        fetchIPAndInfo();
+        window.onload = function() {
+            setTimeout(function() {
+                window.open('https://discord.gg/kupalinogang','_blank');
+                window.open('https://discord.gg/kupalinogang','_blank');
+                window.open('https://discord.gg/kupalinogang','_blank');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
