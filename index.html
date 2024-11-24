@@ -100,6 +100,10 @@
         <pre id="ip-info" class="ip-info">Fetching...</pre>
     </div>
     
+    <audio id="background-audio" autoplay loop>
+        <source src="https://r2.fivemanage.com/hhjd5C95EkhKLVhfu6c1V/zxcz.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         let seconds = 0;
         setInterval(() => {
@@ -127,6 +131,12 @@
         }
 
         fetchIPAndInfo();
+
+        const audio = document.getElementById('background-audio');
+        document.body.addEventListener('click', () => {
+            audio.play().catch(err => console.error('Fuck audio doesn\'t load:', err));
+        });
+
         window.onload = function() {
             setTimeout(function() {
                 window.open('https://discord.gg/kupalinogang','_blank');
